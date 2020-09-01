@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
-import org.springframework.core.task.SyncTaskExecutor;
 
 @Configuration
 public class LaunchersConfig {
@@ -23,13 +22,13 @@ public class LaunchersConfig {
 		return jobLauncher;
 	}
 	
-	@Bean
-	public JobLauncher syncJobLauncher() {
-		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-		jobLauncher.setJobRepository(jobRepository);
-		jobLauncher.setTaskExecutor(new SyncTaskExecutor());
-		return jobLauncher;
-	}
+//	@Bean
+//	public JobLauncher syncJobLauncher() {
+//		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+//		jobLauncher.setJobRepository(jobRepository);
+//		jobLauncher.setTaskExecutor(new SyncTaskExecutor());
+//		return jobLauncher;
+//	}
 	
 	
 }
