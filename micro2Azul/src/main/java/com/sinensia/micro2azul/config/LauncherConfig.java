@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
 @Configuration
-public class LaunchersConfig {
+public class LauncherConfig {
 
 	@Autowired
 	private JobRepository jobRepository;
