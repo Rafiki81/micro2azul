@@ -96,8 +96,12 @@ public class JobPedidoConfig extends AbstractJobConfig {
 		FlatFileItemWriter<DetallePedidoDto> writer = new FlatFileItemWriter<>();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		//TODO mirar fechas
-		writer.setResource(new FileSystemResource("materiales/salidas/pedidos_"+cal.DAY_OF_MONTH+"_"+cal.MONTH+"_"+cal.YEAR+".csv"));
+		writer.setResource(
+				new FileSystemResource(
+						new StringBuilder().append("materiales/salidas/pedidos_")
+						.append(cal.get(cal.DAY_OF_MONTH)).append("_")
+						.append(cal.get(cal.MONTH)).append("_")
+						.append(cal.get(cal.YEAR)).append(".csv").toString()));
 
 		
 		BeanWrapperFieldExtractor<DetallePedidoDto> fieldExtractor = new BeanWrapperFieldExtractor<>();
