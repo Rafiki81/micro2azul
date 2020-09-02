@@ -20,15 +20,6 @@ public class LauncherConfig {
 		jobLauncher.setJobRepository(jobRepository);
 		jobLauncher.setTaskExecutor(new SimpleAsyncTaskExecutor());
 		return jobLauncher;
-	}
-	
-//	@Bean
-//	public JobLauncher syncJobLauncher() {
-//		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-//		jobLauncher.setJobRepository(jobRepository);
-//		jobLauncher.setTaskExecutor(new SyncTaskExecutor());
-//		return jobLauncher;
-//	}
-	
+	}	
 	
 }

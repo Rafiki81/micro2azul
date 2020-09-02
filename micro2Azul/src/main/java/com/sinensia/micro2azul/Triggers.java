@@ -26,14 +26,25 @@ public class Triggers {
 	@Scheduled(cron = "0 * * * * *" )
 	public void cronTrigger() throws BeansException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException  {
 		
-
+		
 		Calendar fecha1 = Calendar.getInstance();
 		fecha1.setTime(new Date());
-		fecha1.set(Calendar.HOUR_OF_DAY, 00);
+		fecha1.set(Calendar.HOUR_OF_DAY, 0);
+		fecha1.set(Calendar.MINUTE, 0);
+		fecha1.set(Calendar.SECOND,0);
+		fecha1.add(Calendar.DATE, -1);
+		
 		Calendar fecha2 = Calendar.getInstance();
-		fecha1.setTime(new Date());
-		fecha1.set(Calendar.HOUR_OF_DAY, 24);
-		System.out.println("se lanza");
+		fecha2.setTime(new Date());
+		fecha2.set(Calendar.HOUR_OF_DAY, 0);
+		fecha2.set(Calendar.MINUTE, 0);
+		fecha2.set(Calendar.SECOND,0);
+		
+		
+		System.out.println("se lanza" );
+		System.out.println(fecha1.getTime());
+		System.out.println(fecha2.getTime());
+		
 		asyncJobLauncher.run(context.getBean("jobPedido", Job.class), new JobParametersBuilder()
 	        .addDate("fecha1", fecha1.getTime())
 	        .addDate("fecha2", fecha2.getTime())

@@ -2,6 +2,7 @@ package com.sinensia.micro2azul.jobmicro2;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -83,9 +84,9 @@ public class JobPedidoConfig extends AbstractJobConfig {
 				ps.setDate(1, new java.sql.Date(fecha1.getTime()));
 				ps.setDate(2, new java.sql.Date(fecha2.getTime()));
 			}
-
 		});
-
+		System.out.println(new java.sql.Date(fecha1.getTime()));
+		System.out.println(new java.sql.Date(fecha2.getTime()));
 		cursorItemReader.setRowMapper(new JobPedidoRowMapper());
 		return cursorItemReader;
 	}
@@ -96,12 +97,11 @@ public class JobPedidoConfig extends AbstractJobConfig {
 		FlatFileItemWriter<DetallePedidoDto> writer = new FlatFileItemWriter<>();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy");
 		writer.setResource(
 				new FileSystemResource(
 						new StringBuilder().append("materiales/salidas/pedidos_")
-						.append(cal.get(cal.DAY_OF_MONTH)).append("_")
-						.append(cal.get(cal.MONTH)).append("_")
-						.append(cal.get(cal.YEAR)).append(".csv").toString()));
+						.append(sdf.format(fecha1)).toString()));
 
 		
 		BeanWrapperFieldExtractor<DetallePedidoDto> fieldExtractor = new BeanWrapperFieldExtractor<>();
